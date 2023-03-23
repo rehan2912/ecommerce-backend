@@ -24,8 +24,12 @@ const UserSchema = new mongoose.Schema(
       default: "",
     },
     cartId: {
-        type: String,
-        default: "",
+      type: String,
+      default: "",
+    },
+    wishlist: {
+      type: Array,
+      default: [],
     }
   },
   { timestamps: true }

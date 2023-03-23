@@ -36,10 +36,10 @@ export const getProduct = async (req, res) => {
     try {
         const pid = req.params.pid;
         const product = await Product.findById(pid);
-        const reviews = await Review.find({productId: pid});
-        res.status(200).json({product, reviews});
+        const reviews = await Review.find({ productId: pid });
+        res.status(200).json({ product, reviews });
     } catch (error) {
-        res.status(404).json({ msg: error.message});
+        res.status(404).json({ msg: error.message });
     }
 }
 
@@ -53,6 +53,16 @@ export const addReview = async (req, res) => {
         const savedReview = await newReview.save();
         res.status(200).json(savedReview);
     } catch (error) {
-        res.status(500).json({ msg: error.message});
+        res.status(500).json({ msg: error.message });
+    }
+}
+
+export const getAllProducts = async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.status(200).json(products)
+    }
+    catch (error) {
+        res.status(500).json({ msg: error.message });
     }
 }
